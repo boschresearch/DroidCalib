@@ -89,6 +89,15 @@ This can be useful in case the camera motion is not sufficiently diverse to rend
 * Avoid motion blur and other artifacts in the images.
 * There should be some structure in the scene (e.g. not just the sky or an unstructured wall).
 
+## Using Docker
+To run with Docker, build the image with:
+```
+docker build . -t droidcalib
+```
+Then run with:
+```
+docker run -it --rm -v YOUR_IMAGE_PATH:/data --gpus all --ipc=host --ulimit memlock=-1 --ulimit stack=67108864 droidcalib python demo.py --imagedir=/data --opt_intr
+```
 
 ## Acknowledgements
 This repository is derived from DROID-SLAM by Teed et al. https://github.com/princeton-vl/DROID-SLAM -- we thank the authors for making their source code available. All files without header are left unchanged and originate from the authors of DROID-SLAM. Files with header were adapted for the self-calibration functionality.
